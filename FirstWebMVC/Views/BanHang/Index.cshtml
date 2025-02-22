@@ -1,0 +1,14 @@
+<form method="post" asp-action="Index">
+    <label for="SoLuong">Nhập Số Lượng:</label>
+    <input type="text" id="SoLuong" name="SoLuong" />
+
+    <label for="DonGia">Nhập Đơn Giá:</label>
+    <input type="text" id="DonGia" name="DonGia" />
+
+    <button type="submit">Tính tổng HĐ</button>
+</form>
+
+@if (ViewBag.TongHD != null)
+{
+    <p>Tong hóa Đơn là: @ViewBag.TongHD</p>
+}

@@ -1,0 +1,17 @@
+<form method="post" asp-action="Tong_Diem">
+    <label for="DiemA">Nhập Điểm A:</label>
+    <input type="text" id="DiemA" name="DiemA" />
+
+    <label for="DiemB">Nhập Điểm B:</label>
+    <input type="text" id="DiemB" name="DiemB" />
+
+    <label for="DiemC">Nhập Điểm C:</label>
+    <input type="text" id="DiemC" name="DiemC" />
+
+    <button type="submit">Tính điểm cuối kỳ</button>
+</form>
+
+@if (ViewBag.TinhDiem != null)
+{
+    <p>Điểm cuối kỳ của bạn là: @ViewBag.TinhDiem</p>
+}
