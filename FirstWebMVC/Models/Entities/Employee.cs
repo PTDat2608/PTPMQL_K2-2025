@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using FirstWebMVC.Models.Entities;
 
-namespace DemoMVC.Models.Entities
+namespace FirstWebMVC.Models.Entities
 {
     public class Employee : Person
     {

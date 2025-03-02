@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FirstWebMVC.Models;
-using DemoMVC.Models.Entities;
+using FirstWebMVC.Models.Entities;
 
 namespace FirstWebMVC.Controllers;
 public class BMIController : Controller

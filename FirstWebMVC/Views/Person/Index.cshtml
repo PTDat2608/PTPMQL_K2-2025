@@ -1,14 +1,46 @@
+@model IEnumerable<FirstWebMVC.Models.Entities.Person>
 
-<form asp-action="Index">
-    <label>Nhập PersonID:</label>
-    <input type="text" name="PersonID">
+@{
+    ViewData["Title"] = "Index";
+}
 
-    <label>Nhập họ tên:</label>
-    <input type="text" name="HoTen">
+<h1>Index</h1>
 
-    <label>Nhập địa chỉ:</label>
-    <input type="text" name="QueQuan">
-    <input type="Submit" value="Gửi dữ liệu">
-</form>
-
-<h1>Dữ liệu từ Controller gửi về là: @ViewBag.infoPerson</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QueQuan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueQuan)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

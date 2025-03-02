@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DemoMVC.Models.Entities
+namespace FirstWebMVC.Models.Entities
 {
     public class BMI
         {

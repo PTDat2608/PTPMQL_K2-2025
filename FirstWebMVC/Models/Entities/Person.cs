@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DemoMVC.Models.Entities
+namespace FirstWebMVC.Models.Entities
 {
+    [Table("Person")]
     public class Person
     {
         [Key]
