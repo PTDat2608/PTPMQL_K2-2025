@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FirstWebMVC.Migrations
 {
-    [DbContext(typeof(ApplicationDbcontext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbcontextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -16,9 +16,37 @@ namespace FirstWebMVC.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
 
-            modelBuilder.Entity("DemoMVC.Models.Entities.Person", b =>
+            modelBuilder.Entity("FirstWebMVC.Models.Entities.HeThongPhanPhoi", b =>
+                {
+                    b.Property<string>("MaHTPP")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TenHTPP")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaHTPP");
+
+                    b.ToTable("HeThongPhanPhoi", (string)null);
+
+                    b.HasDiscriminator().HasValue("HeThongPhanPhoi");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("FirstWebMVC.Models.Entities.Person", b =>
                 {
                     b.Property<string>("PersonID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("HoTen")
@@ -31,7 +59,77 @@ namespace FirstWebMVC.Migrations
 
                     b.HasKey("PersonID");
 
-                    b.ToTable("Person");
+                    b.ToTable("Person", (string)null);
+
+                    b.HasDiscriminator().HasValue("Person");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("FirstWebMVC.Models.Entities.Student", b =>
+                {
+                    b.Property<string>("StudentID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("StudentID");
+
+                    b.ToTable("Student", (string)null);
+                });
+
+            modelBuilder.Entity("FirstWebMVC.Models.Entities.DaiLy", b =>
+                {
+                    b.HasBaseType("FirstWebMVC.Models.Entities.HeThongPhanPhoi");
+
+                    b.Property<string>("DiaChi")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DienThoai")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MaDaiLy")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MaHTTP")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NguoiDaiDien")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TenDaiLy")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("DaiLy");
+                });
+
+            modelBuilder.Entity("FirstWebMVC.Models.Entities.Employee", b =>
+                {
+                    b.HasBaseType("FirstWebMVC.Models.Entities.Person");
+
+                    b.Property<string>("Company")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmployeeID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.ToTable("Person", (string)null);
+
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 #pragma warning restore 612, 618
         }

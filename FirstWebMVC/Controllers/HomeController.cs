@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FirstWebMVC.Models;
+using Microsoft.Extensions.Logging;
 
 namespace FirstWebMVC.Controllers;
 
